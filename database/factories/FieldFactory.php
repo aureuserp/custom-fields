@@ -6,9 +6,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Webkul\CustomFields\Models\Field;
 use Webkul\Security\Models\User;
 
-/**
- * @extends Factory<Field>
- */
 class FieldFactory extends Factory
 {
     protected $model = Field::class;
@@ -32,8 +29,6 @@ class FieldFactory extends Factory
             'form_settings'     => null,
             'table_settings'    => null,
             'infolist_settings' => null,
-
-            // Relationships
             'creator_id' => User::query()->value('id') ?? User::factory(),
         ];
     }

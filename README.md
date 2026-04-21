@@ -306,6 +306,102 @@ The translation file includes 70+ validation rule labels, 200+ Filament setting 
 
 ---
 
+## Configuration
+
+Every navigation / identity / placement setting is configurable **two ways** — pick whichever fits your project:
+
+### 1. Fluent setters in your panel provider (recommended for per-panel overrides)
+
+```php
+// app/Providers/Filament/AdminPanelProvider.php
+use Webkul\CustomFields\CustomFieldsPlugin;
+
+->plugins([
+    CustomFieldsPlugin::make()
+        ->navigationGroup(__('admin.navigation.setting'))
+        ->navigationLabel('Custom Fields')
+        ->navigationIcon('heroicon-o-adjustments-horizontal')
+        ->navigationSort(50)
+        ->navigationBadge(fn () => \Webkul\CustomFields\Models\Field::count())
+        ->navigationBadgeColor('primary')
+        ->slug('admin/custom-fields')
+        ->cluster(\App\Filament\Clusters\AdminTools::class),
+])
+```
+
+### 2. Publishable config file (recommended for app-wide defaults)
+
+```bash
+php artisan vendor:publish --tag="custom-fields-config"
+```
+
+That writes `config/custom-fields.php` to your app. Edit any key:
+
+```php
+// config/custom-fields.php
+return [
+    'navigation' => [
+        'label'   => 'Custom Fields',
+        'group'   => 'Settings',
+        'icon'    => 'heroicon-o-adjustments-horizontal',
+        'sort'    => 50,
+        'badge'   => null,
+        'register'=> true,
+    ],
+    'resource' => [
+        'register'           => true,
+        'slug'               => 'admin/custom-fields',
+        'cluster'            => \App\Filament\Clusters\AdminTools::class,
+        'model_label'        => null,
+        'plural_model_label' => null,
+    ],
+];
+```
+
+### Resolution order
+
+When the Resource renders, each value is resolved by the first matching rule:
+
+1. **Fluent setter** on `CustomFieldsPlugin::make()->…()` — highest priority
+2. **Config file** `config('custom-fields.*')` — if the setter was not called
+3. **Hardcoded fallback** in `getPluginDefaults()` — when both above are `null`
+
+### Full setter → config key map
+
+| Fluent setter | Config key |
+|---|---|
+| `navigationLabel($v)` | `custom-fields.navigation.label` |
+| `navigationGroup($v)` | `custom-fields.navigation.group` |
+| `navigationIcon($v)` | `custom-fields.navigation.icon` |
+| `activeNavigationIcon($v)` | `custom-fields.navigation.active_icon` |
+| `navigationSort($v)` | `custom-fields.navigation.sort` |
+| `navigationBadge($v)` | `custom-fields.navigation.badge` |
+| `navigationBadgeColor($v)` | `custom-fields.navigation.badge_color` |
+| `navigationBadgeTooltip($v)` | `custom-fields.navigation.badge_tooltip` |
+| `navigationParentItem($v)` | `custom-fields.navigation.parent_item` |
+| `subNavigationPosition($v)` | `custom-fields.navigation.sub_position` |
+| `registerNavigation($bool)` | `custom-fields.navigation.register` |
+| `modelLabel($v)` | `custom-fields.resource.model_label` |
+| `pluralModelLabel($v)` | `custom-fields.resource.plural_model_label` |
+| `slug($v)` | `custom-fields.resource.slug` |
+| `cluster($class)` | `custom-fields.resource.cluster` |
+| `tenantRelationshipName($v)` | `custom-fields.resource.tenant_relationship` |
+| `registerResource($bool)` | `custom-fields.resource.register` |
+
+### Disable the admin CRUD entirely
+
+Only want the Eloquent trait + table-injection API, not the admin menu?
+
+```php
+CustomFieldsPlugin::make()->registerResource(false),
+// or in config/custom-fields.php:
+'resource' => ['register' => false],
+```
+
+The `FieldResource` routes are skipped; everything else still works.
+
+---
+
 ## Publishing resources
 
 ```bash

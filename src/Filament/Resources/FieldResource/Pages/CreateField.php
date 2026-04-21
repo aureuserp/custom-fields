@@ -4,7 +4,7 @@ namespace Webkul\CustomFields\Filament\Resources\FieldResource\Pages;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
-use Webkul\CustomFields\CustomCustomFieldsColumnManager;
+use Webkul\CustomFields\CustomFieldsColumnManager;
 use Webkul\CustomFields\Filament\Resources\FieldResource;
 
 class CreateField extends CreateRecord
@@ -15,8 +15,8 @@ class CreateField extends CreateRecord
     {
         return Notification::make()
             ->success()
-            ->title(__('fields::filament/resources/field/pages/create-field.notification.title'))
-            ->body(__('fields::filament/resources/field/pages/create-field.notification.body'));
+            ->title(__('custom-fields::filament/resources/field/pages/create-field.notification.title'))
+            ->body(__('custom-fields::filament/resources/field/pages/create-field.notification.body'));
     }
 
     protected function afterCreate(): void

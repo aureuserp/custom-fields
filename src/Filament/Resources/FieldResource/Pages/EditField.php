@@ -16,8 +16,8 @@ class EditField extends EditRecord
     {
         return Notification::make()
             ->success()
-            ->title(__('fields::filament/resources/field/pages/edit-field.notification.title'))
-            ->body(__('fields::filament/resources/field/pages/edit-field.notification.body'));
+            ->title(__('custom-fields::filament/resources/field/pages/edit-field.notification.title'))
+            ->body(__('custom-fields::filament/resources/field/pages/edit-field.notification.body'));
     }
 
     protected function getHeaderActions(): array

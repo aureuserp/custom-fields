@@ -15,9 +15,9 @@ class ListFields extends ListRecords
     public function getTabs(): array
     {
         return [
-            'all' => Tab::make(__('fields::filament/resources/field/pages/list-fields.tabs.all'))
+            'all' => Tab::make(__('custom-fields::filament/resources/field/pages/list-fields.tabs.all'))
                 ->badge(Field::count()),
-            'archived' => Tab::make(__('fields::filament/resources/field/pages/list-fields.tabs.archived'))
+            'archived' => Tab::make(__('custom-fields::filament/resources/field/pages/list-fields.tabs.archived'))
                 ->badge(Field::onlyTrashed()->count())
                 ->modifyQueryUsing(function ($query) {
                     return $query->onlyTrashed();
@@ -29,7 +29,7 @@ class ListFields extends ListRecords
     {
         return [
             CreateAction::make()
-                ->label(__('fields::filament/resources/field/pages/list-fields.header-actions.create.label'))
+                ->label(__('custom-fields::filament/resources/field/pages/list-fields.header-actions.create.label'))
                 ->icon('heroicon-o-plus-circle'),
         ];
     }
