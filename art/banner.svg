@@ -59,7 +59,7 @@
     <!-- Package ribbon -->
     <g transform="translate(520, 215)" font-family="'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', monospace">
         <rect x="0" y="0" width="220" height="32" rx="16" fill="#0f172a" opacity="0.9"/>
-        <text x="14" y="21" font-size="13" font-weight="600" fill="#ffffff">webkul/custom-fields</text>
+        <text x="14" y="21" font-size="13" font-weight="600" fill="#ffffff">aureuserp/custom-fields</text>
     </g>
 
     <!-- Field type chips -->

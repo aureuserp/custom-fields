@@ -1,7 +1,7 @@
 # Custom Fields for Filament v5
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/webkul/custom-fields.svg?style=flat-square)](https://packagist.org/packages/webkul/custom-fields)
-[![License](https://img.shields.io/packagist/l/webkul/custom-fields.svg?style=flat-square)](LICENSE.md)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/aureuserp/custom-fields.svg?style=flat-square)](https://packagist.org/packages/aureuserp/custom-fields)
+[![License](https://img.shields.io/packagist/l/aureuserp/custom-fields.svg?style=flat-square)](LICENSE.md)
 
 <p align="center">
     <picture>
@@ -67,7 +67,7 @@ Let your end-users add **dynamic fields** to any Eloquent model + Filament resou
 ## Installation
 
 ```bash
-composer require webkul/custom-fields
+composer require aureuserp/custom-fields
 ```
 
 The service provider is auto-discovered. The migration is registered via Spatie's package-tools and run on `php artisan migrate`.
@@ -320,7 +320,7 @@ use Webkul\CustomFields\CustomFieldsPlugin;
     CustomFieldsPlugin::make()
         ->navigationGroup(__('admin.navigation.setting'))
         ->navigationLabel('Custom Fields')
-        ->navigationIcon('heroicon-o-adjustments-horizontal')
+        ->navigationIcon('heroicon-o-puzzle-piece')
         ->navigationSort(50)
         ->navigationBadge(fn () => \Webkul\CustomFields\Models\Field::count())
         ->navigationBadgeColor('primary')
@@ -343,7 +343,7 @@ return [
     'navigation' => [
         'label'   => 'Custom Fields',
         'group'   => 'Settings',
-        'icon'    => 'heroicon-o-adjustments-horizontal',
+        'icon'    => 'heroicon-o-puzzle-piece',
         'sort'    => 50,
         'badge'   => null,
         'register'=> true,
@@ -415,7 +415,7 @@ php artisan vendor:publish --tag="custom-fields-translations"
 ## Testing
 
 ```bash
-vendor/bin/pest plugins/webkul/custom-fields/tests/Feature
+vendor/bin/pest plugins/aureuserp/custom-fields/tests/Feature
 ```
 
 **31 tests (114 assertions)** across:
@@ -456,8 +456,8 @@ Email `support@webkul.com` for security-related reports instead of opening a pub
 PRs welcome. Before submitting:
 
 ```bash
-vendor/bin/pest plugins/webkul/custom-fields/tests/Feature
-vendor/bin/pint plugins/webkul/custom-fields
+vendor/bin/pest plugins/aureuserp/custom-fields/tests/Feature
+vendor/bin/pint plugins/aureuserp/custom-fields
 ```
 
 ---

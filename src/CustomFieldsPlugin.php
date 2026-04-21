@@ -5,7 +5,6 @@ namespace Webkul\CustomFields;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Webkul\CustomFields\Concerns\HasPluginConfiguration;
-use Webkul\CustomFields\Filament\Resources\FieldResource;
 
 class CustomFieldsPlugin implements Plugin
 {
@@ -42,31 +41,13 @@ class CustomFieldsPlugin implements Plugin
 
     public static function get(): static
     {
-        // Return a plain instance whenever no Filament panel is booted
-        // (e.g. during `package:discover` / CLI / early autoload). The Resource
-        // can still read defaults via getPluginDefaults().
         try {
-            /** @var static $plugin */
-            $plugin = filament(app(static::class)->getId());
-
-            return $plugin;
+            return filament(app(static::class)->getId());
         } catch (\Throwable) {
             return app(static::class);
         }
     }
 
-    /**
-     * Fallback values when the consumer hasn't called a fluent setter.
-     *
-     * Reads from config/custom-fields.php first (publishable via
-     * `php artisan vendor:publish --tag=custom-fields-config`) and only
-     * falls back to the hardcoded defaults below when the config key is
-     * null / unset.
-     *
-     * Resolution order: fluent setter → this array → translated string.
-     *
-     * @return array<string, mixed>
-     */
     protected function getPluginDefaults(): array
     {
         return [
@@ -74,7 +55,7 @@ class CustomFieldsPlugin implements Plugin
                 ?? fn () => __('custom-fields::filament/resources/field.navigation.title'),
             'navigationGroup'        => config('custom-fields.navigation.group')
                 ?? fn () => __('custom-fields::filament/resources/field.navigation.group'),
-            'navigationIcon'         => config('custom-fields.navigation.icon') ?? 'heroicon-o-adjustments-horizontal',
+            'navigationIcon'         => config('custom-fields.navigation.icon') ?? 'heroicon-o-puzzle-piece',
             'activeNavigationIcon'   => config('custom-fields.navigation.active_icon'),
             'navigationSort'         => config('custom-fields.navigation.sort') ?? 5,
             'navigationBadge'        => config('custom-fields.navigation.badge'),

@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Gate;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Webkul\CustomFields\Models\Field;
-use Webkul\CustomFields\Policies\FieldPolicy;
 
 class CustomFieldsServiceProvider extends PackageServiceProvider
 {
@@ -29,17 +28,13 @@ class CustomFieldsServiceProvider extends PackageServiceProvider
 
     public function packageRegistered(): void
     {
-        Panel::configureUsing(function (Panel $panel): void {
-            $panel->plugin(CustomFieldsPlugin::make());
-        });
+        $this->app->singleton(CustomFieldsPlugin::class);
     }
 
     public function packageBooted(): void
     {
         FilamentAsset::register([
-            Css::make('custom-fields-styles', __DIR__.'/../resources/dist/custom-fields.css'),
-        ], 'webkul/custom-fields');
-
-        Gate::policy(Field::class, FieldPolicy::class);
+            Css::make('custom-fields', __DIR__.'/../resources/dist/custom-fields.css'),
+        ], 'aureuserp/custom-fields');
     }
 }

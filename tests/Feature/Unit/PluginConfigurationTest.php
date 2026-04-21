@@ -33,7 +33,7 @@ describe('Navigation setters', function () {
     it('navigationIcon — setter + default heroicon', function () {
         $p = freshPlugin();
 
-        expect($p->getNavigationIcon())->toBe('heroicon-o-adjustments-horizontal');
+        expect($p->getNavigationIcon())->toBe('heroicon-o-puzzle-piece');
 
         $p->navigationIcon('heroicon-o-puzzle-piece');
 
@@ -204,7 +204,7 @@ describe('Config-file resolution (setter > config > default)', function () {
 
         $p = freshPlugin();
 
-        expect($p->getNavigationIcon())->toBe('heroicon-o-adjustments-horizontal');
+        expect($p->getNavigationIcon())->toBe('heroicon-o-puzzle-piece');
         expect($p->getNavigationSort())->toBe(5);
     });
 });

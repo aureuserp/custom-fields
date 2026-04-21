@@ -11,7 +11,6 @@ use Webkul\CustomFields\Enums\FieldType;
 use Webkul\CustomFields\Enums\InputType;
 use Webkul\CustomFields\Filament\Resources\FieldResource;
 use Webkul\CustomFields\Models\Field;
-use Webkul\CustomFields\Policies\FieldPolicy;
 
 it('Field model extends Eloquent Model and implements Sortable', function () {
     expect(is_subclass_of(Field::class, Model::class))->toBeTrue();
@@ -28,7 +27,6 @@ it('service provider extends Spatie PackageServiceProvider', function () {
 
 it('core classes exist', function () {
     expect(class_exists(Field::class))->toBeTrue();
-    expect(class_exists(FieldPolicy::class))->toBeTrue();
     expect(class_exists(FieldResource::class))->toBeTrue();
     expect(class_exists(CustomFieldsColumnManager::class))->toBeTrue();
 });

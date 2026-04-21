@@ -1,5 +1,5 @@
 {
-    "name": "webkul/custom-fields",
+    "name": "aureuserp/custom-fields",
     "description": "A Filament v5 plugin that lets end-users add dynamic custom fields to any Eloquent model + Filament resource at runtime.",
     "keywords": [
         "webkul",
@@ -10,7 +10,7 @@
         "custom-fields",
         "dynamic-fields"
     ],
-    "homepage": "https://github.com/webkul/custom-fields",
+    "homepage": "https://github.com/aureuserp/custom-fields",
     "license": "MIT",
     "authors": [
         {

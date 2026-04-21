@@ -18,7 +18,7 @@ use UnitEnum;
  *
  *     CustomFieldsPlugin::make()
  *         ->navigationGroup('Settings')
- *         ->navigationIcon('heroicon-o-adjustments-horizontal')
+ *         ->navigationIcon('heroicon-o-puzzle-piece')
  *         ->navigationSort(50)
  *         ->cluster(\App\Filament\Clusters\AdminTools::class)
  *         ->slug('admin/custom-fields')

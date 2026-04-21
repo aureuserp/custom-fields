@@ -5,7 +5,7 @@ namespace Webkul\CustomFields\Filament\Resources\FieldResource\Pages;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Webkul\CustomFields\CustomCustomFieldsColumnManager;
+use Webkul\CustomFields\CustomFieldsColumnManager;
 use Webkul\CustomFields\Filament\Resources\FieldResource;
 
 class EditField extends EditRecord

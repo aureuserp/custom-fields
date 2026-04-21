@@ -2,14 +2,14 @@
 
 /*
 |--------------------------------------------------------------------------
-| Custom Fields plugin configuration
+| Custom Fields Plugin Configuration
 |--------------------------------------------------------------------------
 |
 | Every value below is also exposed on CustomFieldsPlugin as a fluent setter
 | (e.g. ->navigationGroup(), ->cluster(), ->registerResource(false)). The
 | resolution order at runtime is:
 |
-|   1. Fluent setter   — called on the plugin instance in AdminPanelProvider
+|   1. Fluent setter    — called on the plugin instance in AdminPanelProvider
 |   2. This config file — published with `vendor:publish --tag=custom-fields-config`
 |   3. Hardcoded fallback in getPluginDefaults()
 |
@@ -30,64 +30,210 @@ return [
 
     'navigation' => [
 
-        // Navigation label. null → uses the translated `custom-fields::…navigation.title` string.
+        /*
+        |----------------------------------------------------------------------
+        | Navigation Label
+        |----------------------------------------------------------------------
+        |
+        | The label shown in the sidebar. When null, the plugin falls back to
+        | the translated `custom-fields::…navigation.title` string.
+        |
+        */
+
         'label' => null,
 
-        // Navigation group. null → uses the translated `custom-fields::…navigation.group` string.
-        // Pass a string or a UnitEnum.
+        /*
+        |----------------------------------------------------------------------
+        | Navigation Group
+        |----------------------------------------------------------------------
+        |
+        | The group the resource is nested under in the sidebar. Accepts a
+        | string or a UnitEnum. When null, the plugin falls back to the
+        | translated `custom-fields::…navigation.group` string.
+        |
+        */
+
         'group' => null,
 
-        // Heroicon or BackedEnum name shown beside the label.
-        'icon' => 'heroicon-o-adjustments-horizontal',
+        /*
+        |----------------------------------------------------------------------
+        | Navigation Icon
+        |----------------------------------------------------------------------
+        |
+        | A Heroicon name or BackedEnum instance rendered next to the label.
+        |
+        */
 
-        // Icon when the resource page is active. null → falls back to `icon`.
+        'icon' => 'heroicon-o-puzzle-piece',
+
+        /*
+        |----------------------------------------------------------------------
+        | Active Navigation Icon
+        |----------------------------------------------------------------------
+        |
+        | The icon displayed when the resource page is active. When null, the
+        | plugin falls back to the `icon` value above.
+        |
+        */
+
         'active_icon' => null,
 
-        // Lower sorts first.
+        /*
+        |----------------------------------------------------------------------
+        | Navigation Sort
+        |----------------------------------------------------------------------
+        |
+        | Controls ordering within the sidebar group. Lower values sort first.
+        |
+        */
+
         'sort' => 5,
 
-        // Optional badge (string or null) shown on the nav item.
+        /*
+        |----------------------------------------------------------------------
+        | Navigation Badge
+        |----------------------------------------------------------------------
+        |
+        | Optional badge text displayed on the nav item. Accepts a string or
+        | null to hide the badge entirely.
+        |
+        */
+
         'badge' => null,
 
-        // Badge color — scalar (e.g. 'primary') or [hue => value] array.
+        /*
+        |----------------------------------------------------------------------
+        | Navigation Badge Color
+        |----------------------------------------------------------------------
+        |
+        | The badge color. Accepts a scalar color name (e.g. 'primary') or an
+        | [hue => value] array for custom palettes.
+        |
+        */
+
         'badge_color' => null,
 
-        // Tooltip shown when hovering the badge.
+        /*
+        |----------------------------------------------------------------------
+        | Navigation Badge Tooltip
+        |----------------------------------------------------------------------
+        |
+        | Tooltip text displayed when the user hovers the badge.
+        |
+        */
+
         'badge_tooltip' => null,
 
-        // Nest this resource under another nav item by label.
+        /*
+        |----------------------------------------------------------------------
+        | Parent Navigation Item
+        |----------------------------------------------------------------------
+        |
+        | Nests this resource underneath another navigation item, matched by
+        | its label.
+        |
+        */
+
         'parent_item' => null,
 
-        // Filament\Pages\Enums\SubNavigationPosition::Start|Top|End — or null.
+        /*
+        |----------------------------------------------------------------------
+        | Sub-Navigation Position
+        |----------------------------------------------------------------------
+        |
+        | One of Filament\Pages\Enums\SubNavigationPosition::Start, Top, or End
+        | — or null to use the default position.
+        |
+        */
+
         'sub_position' => null,
 
-        // false hides the item from the sidebar but keeps the route reachable.
+        /*
+        |----------------------------------------------------------------------
+        | Register Navigation Item
+        |----------------------------------------------------------------------
+        |
+        | When false, the item is hidden from the sidebar but the underlying
+        | route remains reachable.
+        |
+        */
+
         'register' => true,
 
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Resource identity + placement
+    | Resource Identity & Placement
     |--------------------------------------------------------------------------
+    |
+    | Controls how the Custom Fields resource itself is registered, routed,
+    | and labelled within the Filament admin panel.
+    |
     */
 
     'resource' => [
 
-        // false disables the admin CRUD entirely (trait + table-injection APIs still work).
+        /*
+        |----------------------------------------------------------------------
+        | Register Resource
+        |----------------------------------------------------------------------
+        |
+        | When false, the admin CRUD is disabled entirely. The trait and
+        | table-injection APIs continue to function regardless.
+        |
+        */
+
         'register' => true,
 
-        // URL segment — e.g. 'fields' → /admin/fields, 'admin/custom-fields' → /admin/admin/custom-fields.
+        /*
+        |----------------------------------------------------------------------
+        | Resource Slug
+        |----------------------------------------------------------------------
+        |
+        | The URL segment used for the resource. For example, 'fields' produces
+        | /admin/fields while 'admin/custom-fields' produces
+        | /admin/admin/custom-fields.
+        |
+        */
+
         'slug' => 'fields',
 
-        // FQCN of a Filament Cluster to nest this resource under. null → top level.
+        /*
+        |----------------------------------------------------------------------
+        | Resource Cluster
+        |----------------------------------------------------------------------
+        |
+        | The fully-qualified class name of a Filament Cluster to nest this
+        | resource under. When null, the resource sits at the top level.
+        |
+        */
+
         'cluster' => null,
 
-        // Filament model labels shown on forms, tables, and breadcrumbs.
-        'model_label'        => null,   // null → falls back to translated title
-        'plural_model_label' => null,   // null → falls back to translated title
+        /*
+        |----------------------------------------------------------------------
+        | Model Labels
+        |----------------------------------------------------------------------
+        |
+        | The singular and plural model labels shown on forms, tables, and
+        | breadcrumbs. When null, the plugin falls back to the translated
+        | title string.
+        |
+        */
 
-        // Multi-tenant relationship name on the Field model.
+        'model_label'        => null,
+        'plural_model_label' => null,
+
+        /*
+        |----------------------------------------------------------------------
+        | Tenant Relationship
+        |----------------------------------------------------------------------
+        |
+        | The multi-tenant relationship name defined on the Field model.
+        |
+        */
+
         'tenant_relationship' => null,
 
     ],
