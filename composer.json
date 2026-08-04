@@ -25,7 +25,7 @@
         "filament/forms": "^5.0",
         "filament/infolists": "^5.0",
         "filament/tables": "^5.0",
-        "spatie/eloquent-sortable": "^4.0",
+        "spatie/eloquent-sortable": "^4.0|^5.0",
         "spatie/laravel-package-tools": "^1.15"
     },
     "autoload": {

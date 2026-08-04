@@ -58,9 +58,9 @@ Let your end-users add **dynamic fields** to any Eloquent model + Filament resou
 ## Requirements
 
 - PHP 8.2+
-- Laravel 11+
-- Filament v5+
-- `spatie/eloquent-sortable` v4 (already a Filament dependency)
+- Laravel 11.28+, 12, or 13
+- Filament v5+ — note that Laravel 13 requires Filament v5.4 or later
+- `spatie/eloquent-sortable` v4 or v5 (a direct dependency of this package; Laravel 13 resolves v5)
 
 ---
 
