@@ -1,3 +1,13 @@
+# 🚀 CHANGELOG — v1.0.1
+
+### ✨ Improvements
+
+* Updated README requirements to reflect Laravel 11.28+, 12, and 13 support
+
+### 🐛 Fixes
+
+* #2 [fixed] - Installation failing on Laravel 13 due to the `spatie/eloquent-sortable ^4.0` constraint
+
 # 🚀 CHANGELOG — v1.0.0
 
 ### 🧩 Features
